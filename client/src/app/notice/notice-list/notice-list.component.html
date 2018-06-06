@@ -1,0 +1,19 @@
+<div class="row">
+    <a class="btn btn-primary pull-right" routerLink="/notices/new">Add Notice</a>
+</div>
+
+<a *ngFor="let notice of notices" [routerLink]="['/notices', notice.id]">
+    <div class="row list-item">
+        <div class="col-sm-12">
+            <h3 class="title">{{ notice.title }}</h3>
+            <p>{{ notice.description && notice.description.length < 100 ? notice.description : notice.description.substring(0, 200) + ' Cont...' }}</p>
+            <span class="muted-text">Last updated at {{ notice.updated_at }}</span>
+        </div>
+    </div>
+</a>
+
+<div *ngIf="notices.length <= 0" class="not-available">
+    <div align="center" class="alert alert-info" role="alert">
+        <strong>No Notices Available</strong>
+    </div>
+</div>
